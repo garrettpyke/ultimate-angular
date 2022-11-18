@@ -6,12 +6,8 @@ import { Component } from "@angular/core";
   template: `
       <div class="app">
         <h2>{{ title + '!' }}</h2>
-        <button (click)="handleClick()">change name</button>
-        <input type="text"
-              [ngModel]="name"
-              (ngModelChange)="handleChange($event)">
-        <input type="text"
-              [(ngModel)]="name">
+        <button (click)="handleClick(username.value)">Get value</button>
+        <input type="text" #username> <!-- using Template #ref -->
         <div>{{ name }}</div>
       </div>
     `
@@ -23,10 +19,8 @@ export class AppComponent {
   constructor() {
     this.title = 'Ultimate Angular';
   }
-  handleClick() {
-    this.name = 'Pyke';
+  handleClick(value: string) {
+    console.log(value);
   }
-  handleChange(value: string) {
-    this.name = value;
-  }
+
 }
