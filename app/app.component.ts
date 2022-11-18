@@ -6,21 +6,24 @@ import { Component } from "@angular/core";
   template: `
       <div class="app">
         <h2>{{ title + '!' }}</h2>
-        <button (click)="handleClick(username.value)">Get value</button>
-        <input type="text" #username> <!-- using Template #ref -->
-        <div>{{ name }}</div>
+        <input type="text"
+            [value]="name"
+            (input)="handleChange($event.target.value)">
+        <div *ngIf="name.length >= 3">
+          Searching for...{{ name }}
+        </div>
       </div>
     `
 })
 export class AppComponent {
   title: string;
-  name: string = 'Garrett';
+  name: string = '';
   isHappy: boolean = true;
   constructor() {
     this.title = 'Ultimate Angular';
   }
-  handleClick(value: string) {
-    console.log(value);
+  handleChange(value: string) {
+    this.name = value;
   }
 
 }
