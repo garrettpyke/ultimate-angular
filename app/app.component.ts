@@ -14,6 +14,9 @@ interface Passenger {
       <h3>Airline Passengers</h3>
       <ul>
         <li *ngFor="let passenger of passengers; let i = index;">
+          <span class="status"
+            [class.checked-in]="passenger.checkedIn"
+          ></span>
           {{ i+1 }}: {{ passenger.fullname }}
         </li>
       </ul>
